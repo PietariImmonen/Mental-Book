@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import DragDrop from './components/DragDrop'
-import FrontPage from './components/FrontPage'
-import Navbar from './components/Navbar'
+import DragDrop from './components/DragAndDrop/DragDrop'
+import FrontPage from './components/FrontPage/FrontPage'
+import Navbar from './components/Navbar/Navbar'
 
 function App() {
   const [count, setCount] = useState(0)
