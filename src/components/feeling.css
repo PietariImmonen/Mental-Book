@@ -1,0 +1,23 @@
+.feeling, .feeling-widget {
+    width: 12em;
+    aspect-ratio: 16/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #060606;
+    border-radius: 2em;
+    margin-top: 5px;
+}
+
+.drag-drop-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.feelings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

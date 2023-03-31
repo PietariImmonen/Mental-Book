@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+.web-content {
+    margin-top: 50px;
+}
