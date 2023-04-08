@@ -1,0 +1,45 @@
+.sign-page {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #FCFBF4;
+    box-shadow: 3px 0px 14px -6px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    min-width: 300px;
+    padding: 2rem;
+}
+
+.sign-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.sign-input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+.sign-input-button {
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #060606;
+}
+
+@media only screen and (max-width: 600px) {
+    .sign-container {
+        min-width: 250px;
+    }
+}

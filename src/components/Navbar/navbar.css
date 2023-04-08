@@ -5,6 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    opacity: 0.8;
 }
 
 .nav-inside-container {
@@ -12,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
 }
 
 .nav-right-container {
@@ -79,6 +80,10 @@
     }
     .small {
         margin: 0;
+    }
+
+    .nav-item {
+        font-size: 26px;
     }
 
     .nav-inside-container {

@@ -8,7 +8,7 @@
     display: flex;
     width: 100%;
     height: 100vh;
-    background-image: url( "../assets/banner-img.jpg");
+    background-image: url( "/src/assets/banner-img.jpg");
     background-size: cover;
 }
 
@@ -59,8 +59,10 @@
 .front-middle-image {
     width: 300px;
     aspect-ratio: 8/10;
-    background-image: url("../assets/front-middle.jpg");
+    background-image: url("/src/assets/front-middle.jpg");
     background-size: cover;
+    box-shadow: 3px 0px 14px -6px rgba(0,0,0,0.75);
+    border-radius: 10px;
 }
 
 .front-boxes {
@@ -86,6 +88,7 @@
     align-items: center;
     border-radius: 20px;
     background-color: #FCFBF4;
+    box-shadow: 3px 0px 14px -6px rgba(0,0,0,0.75);
 }
 
 .front-box-inside {
