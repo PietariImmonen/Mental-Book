@@ -1,7 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './loginpage.css'
+import { useMutation } from '@apollo/client'
+import { LOGIN } from '../../queries/query'
 
-const LoginPage = () => {
+interface props {
+  setToken: (e: any) => void;
+  token: string | null;
+}
+
+const LoginPage: React.FC<props> = ({setToken, token}) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -12,6 +19,27 @@ const LoginPage = () => {
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value)
   }
+
+  const [ login, result ] = useMutation(LOGIN, {
+    onError: (error) => {
+      console.log(error.graphQLErrors[0].message)
+    }
+  })
+
+  const submit = async (event: any) => {
+    login({ variables: { username, password } })
+    console.log(result, 'result')
+  }
+
+
+  useEffect(() => {
+    if ( result.data ) {
+      const token = result.data.login.value
+      setToken(token)
+      localStorage.setItem('phonenumbers-user-token', token)
+      console.log(token)
+    }
+  }, [result.data]) // eslint-disable-line
 
   console.log(username, password)
   return (
@@ -35,7 +63,7 @@ const LoginPage = () => {
           ></input>
           <p className='login-input-text'>Password</p>
         </div>
-        <div className='login-input-button'>Log in!</div>
+        <div className='login-input-button' onClick={submit}>Log in!</div>
         <div className='login-page-text'>
           <a href='/' className='login-text'>Forgot password!</a>
           <a href='/signup' className='login-text'>Create account!</a>

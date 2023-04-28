@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import './singinpage.css'
+import { useMutation } from '@apollo/client'
+import { CREATE_ACCOUNT } from '../../queries/query'
 
 const SignInPage = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('')
 
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.currentTarget.value)
@@ -14,8 +15,17 @@ const SignInPage = () => {
     setPassword(e.currentTarget.value)
   }
 
-  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.currentTarget.value)
+
+  const [ account, result ] = useMutation(CREATE_ACCOUNT, {
+    onError: (error) => {
+      console.log(error.graphQLErrors[0].message)
+    }
+  })
+
+  const submit = async (event: any) => {
+    console.log('called')
+    account({ variables: { username, password } })
+    console.log(result, 'result')
   }
 
   return (
@@ -39,16 +49,7 @@ const SignInPage = () => {
           ></input>
           <p className='sign-input-text'>Password</p>
         </div>
-        <div className='sign-input-container'>
-          <input 
-            type='email'
-            onChange={handleEmail}
-            className='sign-input'
-            value={email}
-          ></input>
-          <p className='sign-input-text'>Email</p>
-        </div>
-        <div className='sign-input-button'>Create Account!</div>
+        <div className='sign-input-button' onClick={submit}>Create Account!</div>
       </div>
     </div>
   )

@@ -23,6 +23,11 @@
     justify-content: center;
 }
 
+.nav-items-last {
+    display: flex;
+    gap: 1rem;
+}
+
 .nav-item {
     font-size: 20px;
     font-weight: 400;

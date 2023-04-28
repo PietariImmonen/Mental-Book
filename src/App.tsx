@@ -12,8 +12,21 @@ import {
 import About from './components/About/About'
 import LoginPage from './components/LoginPage/LoginPage'
 import SignInPage from './components/SignInPage/SignInPage'
+import { useApolloClient, useQuery } from '@apollo/client'
+
+import { ALL_PERSONS, ADD_FEELING, LOGIN } from './queries/query'
 
 function App() {
+
+  const client = useApolloClient()
+  const [token, setToken] = useState(null)
+
+  const handleLogOut = () => {
+    setToken(null)
+    localStorage.clear()
+    client.resetStore()
+    console.log(token)
+  }
 
   const router = createBrowserRouter([
     {
@@ -26,7 +39,7 @@ function App() {
     },
     {
       path: "/login",
-      element: <LoginPage />,
+      element: <LoginPage token={token} setToken={setToken}/>,
     },
     {
       path: "/signup",
@@ -34,13 +47,13 @@ function App() {
     },
     {
       path: "/write",
-      element: <DragDrop />,
+      element: <DragDrop token={token}/>,
     },
   ]);
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar token={token} handleLogOut={handleLogOut}/>
       <div className='web-content'>
         <RouterProvider router={router} />
       </div>
